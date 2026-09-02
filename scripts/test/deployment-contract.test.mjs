@@ -295,8 +295,18 @@ test("CI container gate and operator documentation contract", async () => {
       source("deploy/checklists/backup-restore.md"),
       source("README.md"),
     ]);
+  const e2eJob = workflow.slice(
+    workflow.indexOf("\n  e2e:"),
+    workflow.indexOf("\n  containers:"),
+  );
   const containersJob = workflow.slice(workflow.indexOf("\n  containers:"));
-  assert.match(workflow, /^  containers:\n    needs: verify$/mu);
+  assert.match(e2eJob, /^  e2e:\n[\s\S]*?timeout-minutes: 35$/mu);
+  assert.match(e2eJob, /playwright install --with-deps chromium/u);
+  assert.match(e2eJob, /pnpm test:e2e/u);
+  assert.match(
+    workflow,
+    /^  containers:\n    needs:\n      - verify\n      - e2e$/mu,
+  );
   assert.match(workflow, /timeout-minutes:\s*30/u);
   assert.match(workflow, /permissions:\n\s+contents: read/u);
   assert.match(workflow, /docker\/setup-buildx-action@[0-9a-f]{40}/u);
