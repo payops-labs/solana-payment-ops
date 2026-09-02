@@ -2,6 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const fixtureOrigin = "http://127.0.0.1:3401";
+const evidenceId = "00000000-0000-4000-8000-000000000204";
 
 test.beforeEach(async ({ request }) => {
   await request.post(`${fixtureOrigin}/__test/reset`, {
@@ -21,6 +22,22 @@ test("reviews and assigns a Solana payment exception", async ({ page }) => {
     page.getByText("Maya@acme.example", { exact: false }),
   ).toBeVisible();
   await expect(page.locator(".state-assigned")).toHaveText("Assigned");
+});
+
+test("keeps the evidence-ready content readable without a sidebar", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "desktop layout regression");
+  await page.goto(`/operations/evidence/${evidenceId}`);
+
+  const workspace = page.locator(".evidence-ready .ops-workspace");
+  await expect(
+    page.getByRole("heading", {
+      name: "Keep the three verification files together.",
+    }),
+  ).toBeVisible();
+  const bounds = await workspace.boundingBox();
+  expect(bounds?.width).toBeGreaterThan(900);
 });
 
 test("shows the exact authority gates, health freshness, and incident history", async ({
