@@ -46,6 +46,8 @@ jobs:
       DATABASE_URL: postgres://payops:payops@127.0.0.1:5432/payops_test
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
         with:
           version: 11.15.0
@@ -55,16 +57,50 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test:e2e
       - run: pnpm schemas:check
       - run: pnpm openapi:check
       - run: pnpm conformance fixtures/v0.1/manifest.json
       - run: pnpm audit --prod
       - run: node scripts/verify-public-packages.mjs
 
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    services:
+      postgres:
+        image: postgres:16-alpine@sha256:57c72fd2a128e416c7fcc499958864df5301e940bca0a56f58fddf30ffc07777
+        env:
+          POSTGRES_DB: payops_test
+          POSTGRES_PASSWORD: payops
+          POSTGRES_USER: payops
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U payops -d payops_test"
+          --health-interval 1s
+          --health-timeout 3s
+          --health-retries 30
+    env:
+      DATABASE_URL: postgres://payops:payops@127.0.0.1:5432/payops_test
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+        with:
+          version: 11.15.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.18.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+
   containers:
-    needs: verify
+    needs:
+      - verify
+      - e2e
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
