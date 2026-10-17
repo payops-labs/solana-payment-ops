@@ -26,11 +26,11 @@
     "@payops/ingestion": "workspace:^0.1.1",
     "@payops/platform": "workspace:*",
     "@payops/webhooks": "workspace:^0.1.1",
-    "postgres": "3.4.7"
+    "postgres": "3.4.9"
   },
   "devDependencies": {
     "@payops/reconciliation": "workspace:^0.1.1",
-    "@types/node": "22.20.1",
-    "vitest": "4.1.11"
+    "@types/node": "26.6.5",
+    "vitest": "5.0.4"
   }
 }

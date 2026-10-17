@@ -50,12 +50,12 @@
   "dependencies": {
     "@payops/core": "workspace:^0.1.1",
     "@payops/webhooks": "workspace:^0.1.1",
-    "@solana/kit": "7.0.0",
-    "csv-parse": "7.0.2",
-    "postgres": "3.4.7"
+    "@solana/kit": "8.5.0",
+    "csv-parse": "7.0.3",
+    "postgres": "3.4.9"
   },
   "devDependencies": {
     "@payops/ingestion": "workspace:^0.1.1",
-    "vitest": "4.1.11"
+    "vitest": "5.0.4"
   }
 }

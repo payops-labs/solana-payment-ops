@@ -58,10 +58,10 @@
     "@payops/contracts": "workspace:^0.1.1",
     "@payops/core": "workspace:^0.1.1",
     "ipaddr.js": "2.5.0",
-    "postgres": "3.4.7",
-    "undici": "7.29.1"
+    "postgres": "3.4.9",
+    "undici": "8.12.1"
   },
   "devDependencies": {
-    "vitest": "4.1.11"
+    "vitest": "5.0.4"
   }
 }

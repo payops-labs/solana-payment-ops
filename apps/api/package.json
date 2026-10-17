@@ -23,23 +23,23 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@better-auth/api-key": "1.6.26",
+    "@better-auth/api-key": "1.7.8",
     "@payops/contracts": "workspace:^0.1.1",
     "@payops/ingestion": "workspace:^0.1.1",
     "@payops/platform": "workspace:*",
     "@payops/reconciliation": "workspace:^0.1.1",
     "@payops/webhooks": "workspace:^0.1.1",
-    "better-auth": "1.6.26",
-    "drizzle-orm": "0.45.2",
-    "fastify": "5.12.5",
-    "postgres": "3.4.7",
-    "zod": "4.4.3"
+    "better-auth": "1.7.8",
+    "drizzle-orm": "0.45.4",
+    "fastify": "5.12.7",
+    "postgres": "3.4.9",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@payops/sdk": "workspace:^0.1.1",
-    "@solana/kit": "7.0.0",
-    "@types/node": "22.20.1",
-    "auth": "1.6.26",
-    "vitest": "4.1.11"
+    "@solana/kit": "8.5.0",
+    "@types/node": "26.6.5",
+    "auth": "1.7.8",
+    "vitest": "5.0.4"
   }
 }
