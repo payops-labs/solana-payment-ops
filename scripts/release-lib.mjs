@@ -203,7 +203,7 @@ export function verifyPublicPackageMetadata(
     `Public package license is invalid: ${expectedName}`,
   );
   assert(
-    packageManifest.engines?.node === ">=22.18.0",
+    packageManifest.engines?.node === ">=22.19.0",
     `Public package Node engine is invalid: ${expectedName}`,
   );
   assert(

@@ -85,7 +85,7 @@ test("container build contract", async () => {
   assert.match(dockerfile, /^# syntax=docker\/dockerfile:1\.\d+$/mu);
   assert.match(
     dockerfile,
-    /node:22\.18\.0-bookworm-slim@sha256:752ea8a2f758c34002a0461bd9f1cee4f9a3c36d48494586f60ffce1fc708e0e/u,
+    /node:22\.23\.2-bookworm-slim@sha256:48e4b67d85f87bd551df43704e24d252f56cc5f8e9718841aace50f19948f0f9/u,
   );
   assert.match(dockerfile, /pnpm install --frozen-lockfile --ignore-scripts/u);
   assert.doesNotMatch(

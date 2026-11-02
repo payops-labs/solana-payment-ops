@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.19.0"
   },
   "bin": {
     "payops-worker": "./dist/bin.js"
@@ -31,6 +31,6 @@
   "devDependencies": {
     "@payops/reconciliation": "workspace:^0.1.1",
     "@types/node": "22.20.1",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

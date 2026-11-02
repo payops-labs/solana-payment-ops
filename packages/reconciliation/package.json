@@ -21,7 +21,7 @@
     "accounting"
   ],
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.19.0"
   },
   "publishConfig": {
     "access": "public"
@@ -56,6 +56,6 @@
   },
   "devDependencies": {
     "@payops/ingestion": "workspace:^0.1.1",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

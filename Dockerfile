@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 
-FROM node:22.18.0-bookworm-slim@sha256:752ea8a2f758c34002a0461bd9f1cee4f9a3c36d48494586f60ffce1fc708e0e AS toolchain
+FROM node:22.23.2-bookworm-slim@sha256:48e4b67d85f87bd551df43704e24d252f56cc5f8e9718841aace50f19948f0f9 AS toolchain
 ENV PNPM_HOME=/pnpm
 ENV PATH=/pnpm:$PATH
 WORKDIR /workspace
@@ -19,7 +19,7 @@ RUN pnpm --config.ignore-scripts=true --filter @payops/api deploy --prod --legac
   && find /out -type d -path '*/node_modules/@payops/*/src' -prune -exec rm -rf '{}' + \
   && find /out -type d -path '*/node_modules/@payops/*/test' -prune -exec rm -rf '{}' +
 
-FROM node:22.18.0-bookworm-slim@sha256:752ea8a2f758c34002a0461bd9f1cee4f9a3c36d48494586f60ffce1fc708e0e AS runtime
+FROM node:22.23.2-bookworm-slim@sha256:48e4b67d85f87bd551df43704e24d252f56cc5f8e9718841aace50f19948f0f9 AS runtime
 ARG PAYOPS_BUILD_REVISION
 RUN node -e "if (!/^[0-9a-f]{40}$/.test(process.argv[1])) process.exit(1)" "$PAYOPS_BUILD_REVISION"
 LABEL org.opencontainers.image.source="https://github.com/payops-labs/solana-payment-ops"

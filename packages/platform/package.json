@@ -7,7 +7,7 @@
     "payops-platform": "./dist/bin.js"
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.19.0"
   },
   "exports": {
     ".": {
@@ -32,10 +32,10 @@
     "decimal.js": "10.6.0",
     "drizzle-orm": "0.45.2",
     "postgres": "3.4.7",
-    "zod": "4.4.3"
+    "zod": "4.6.6"
   },
   "devDependencies": {
     "@types/node": "22.20.1",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

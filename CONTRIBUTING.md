@@ -18,7 +18,7 @@ be agreed before implementation.
 
 ## Prerequisites
 
-- Node.js 22.18.0 or newer
+- Node.js 22.19.0 or newer
 - pnpm 11.15.0
 - Docker-compatible PostgreSQL 16 for database-backed tests
 
