@@ -44,7 +44,7 @@ body:
       description: Include PayOps version, Node.js version, operating system, database version if relevant, and Solana cluster.
       placeholder: |
         PayOps: 0.1.0
-        Node.js: 22.18.0
+        Node.js: 22.23.2
         OS: macOS 15
         Cluster: devnet
     validations:

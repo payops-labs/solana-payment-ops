@@ -594,7 +594,7 @@ function publicPackageManifest() {
     version: "0.1.1",
     description: "Deterministic Solana payment verification primitives",
     license: "Apache-2.0",
-    engines: { node: ">=22.18.0" },
+    engines: { node: ">=22.19.0" },
     files: ["dist", "README.md", "LICENSE"],
     repository: {
       type: "git",

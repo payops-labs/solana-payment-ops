@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.19.0"
   },
   "scripts": {
     "build": "next build",
@@ -29,6 +29,6 @@
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "jsdom": "30.0.1",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

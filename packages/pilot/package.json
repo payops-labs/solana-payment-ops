@@ -21,7 +21,7 @@
     "merchants"
   ],
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=22.19.0"
   },
   "publishConfig": {
     "access": "public"
@@ -56,9 +56,9 @@
     "@payops/webhooks": "workspace:^0.1.1",
     "@solana/kit": "7.0.0",
     "postgres": "3.4.7",
-    "zod": "4.4.3"
+    "zod": "4.6.6"
   },
   "devDependencies": {
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

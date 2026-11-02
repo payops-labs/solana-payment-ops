@@ -4,7 +4,7 @@ import {
   type AuthEmail,
   type EmailDeliveryPort,
 } from "@payops/platform";
-import { betterAuth } from "better-auth";
+import { betterAuth, type Auth, type BetterAuthOptions } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { hashPassword } from "better-auth/crypto";
 import { organization, twoFactor } from "better-auth/plugins";
@@ -28,6 +28,14 @@ const readOnlyRole = defaultAc.newRole({
   ac: ["read"],
 });
 
+type PayOpsAuthOptions = Omit<BetterAuthOptions, "plugins"> & {
+  plugins: [
+    ReturnType<typeof organization>,
+    ReturnType<typeof twoFactor>,
+    ReturnType<typeof apiKey>,
+  ];
+};
+
 export function createPayOpsAuth(
   config: ApiConfig,
   emailDelivery: EmailDeliveryPort,
@@ -37,7 +45,7 @@ export function createPayOpsAuth(
     onnotice: () => undefined,
   });
   const database = drizzle(client, { schema: betterAuthSchema });
-  const auth = betterAuth({
+  const auth: Auth<PayOpsAuthOptions> = betterAuth<PayOpsAuthOptions>({
     appName: "PayOps",
     baseURL: config.publicApiOrigin,
     basePath: "/api/auth",
